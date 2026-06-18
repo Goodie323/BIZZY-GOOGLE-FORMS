@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Bizzy Core Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B3D;
+    --navy-soft:#1B2A57;
+    --green:#1FAE6E;
+    --green-soft:#E6F6EE;
+    --amber:#F2A93B;
+    --canvas:#FAF9F6;
+    --paper:#FFFFFF;
+    --slate:#5B6472;
+    --slate-light:#8A93A3;
+    --line:#E7E4DC;
+    --line-soft:#EFEDE6;
+    --danger:#D14343;
+    --shadow-sm: 0 1px 2px rgba(15,27,61,0.04);
+    --shadow-md: 0 4px 16px rgba(15,27,61,0.06);
+    --shadow-lg: 0 16px 48px rgba(15,27,61,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--canvas);
+    color:var(--navy);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .texture{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: radial-gradient(circle, rgba(15,27,61,0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity:0.6;
+  }
+
+  .shell{
+    position:relative; z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 28px 16px 60px;
+  }
+
+  /* ---------- Top brand bar ---------- */
+  .brandbar{
+    width:100%;
+    max-width:720px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom: 28px;
+  }
+  .brandbar img.namepng{ height:28px; object-fit:contain; }
+  .brandbar .role-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--green);
+    background:var(--green-soft);
+    border:1px solid rgba(31,174,110,0.18);
+    padding:6px 10px;
+    border-radius:999px;
+    font-weight:500;
+  }
+
+  /* ---------- Card ---------- */
+  .card{
+    width:100%;
+    max-width:720px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:22px;
+    box-shadow:var(--shadow-lg);
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* ---------- Hero / intro panel ---------- */
+  .hero{
+    padding:40px 36px 32px;
+    border-bottom:1px solid var(--line-soft);
+    position:relative;
+  }
+  .hero .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    color:var(--slate);
+    margin-bottom:18px;
+  }
+  .hero .eyebrow .pulse-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 0 rgba(31,174,110,0.5);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(31,174,110,0.45);}
+    70%{box-shadow:0 0 0 7px rgba(31,174,110,0);}
+    100%{box-shadow:0 0 0 0 rgba(31,174,110,0);}
+  }
+
+  .hero h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(26px, 4vw, 32px);
+    line-height:1.18;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{ color:var(--green); }
+
+  .hero p.lede{
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--slate);
+    margin:0 0 16px;
+    max-width:560px;
+  }
+  .hero p.lede strong{ color:var(--navy); font-weight:600; }
+
+  /* ---------- Mission statement ---------- */
+  .mission-strip{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    background:var(--navy);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:20px;
+  }
+  .mission-strip .mission-icon{
+    font-size:16px;
+    flex-shrink:0;
+    margin-top:1px;
+  }
+  .mission-strip p{
+    margin:0;
+    font-size:13px;
+    line-height:1.55;
+    color:rgba(255,255,255,0.85);
+  }
+  .mission-strip p strong{ color:#fff; }
+
+  /* ---------- Hero CTA urgency note ---------- */
+  .hero-cta-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+  }
+  .urgency-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color:var(--amber);
+    background:rgba(242,169,59,0.1);
+    border:1px solid rgba(242,169,59,0.22);
+    padding:5px 9px;
+    border-radius:999px;
+    font-weight:500;
+  }
+  .hero-cta-text{
+    font-size:13px;
+    color:var(--slate);
+    line-height:1.45;
+  }
+  .hero-cta-text strong{ color:var(--navy); }
+
+  /* ---------- WhatsApp bubble preview ---------- */
+  .bubble-preview{
+    display:flex;
+    gap:10px;
+    align-items:flex-end;
+    margin: 4px 0 22px;
+  }
+  .bubble-avatar{
+    width:30px;height:30px;border-radius:9px;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    box-shadow:var(--shadow-sm);
+  }
+  .bubble-avatar img{ width:18px; height:18px; object-fit:contain; }
+  .bubble{
+    background:var(--green-soft);
+    border:1px solid rgba(31,174,110,0.16);
+    border-radius:4px 14px 14px 14px;
+    padding:11px 14px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--navy-soft);
+    max-width:420px;
+    position:relative;
+  }
+  .bubble .lang-row{
+    display:flex; gap:5px; margin-top:7px; flex-wrap:wrap;
+  }
+  .bubble .lang-row span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--green);
+    background:rgba(31,174,110,0.1);
+    padding:2px 6px;
+    border-radius:5px;
+  }
+
+  /* ---------- Perk grid ---------- */
+  .perk-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+  @media (max-width:480px){ .perk-grid{ grid-template-columns:1fr; } }
+  .perk{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:11px 12px;
+    background:var(--canvas);
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+  }
+  .perk .ico{
+    width:22px;height:22px;
+    border-radius:7px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-size:11px;
+  }
+  .perk .txt{ font-size:12px; line-height:1.4; color:var(--navy-soft); font-weight:500; }
+  .perk .txt span{ display:block; font-size:10.5px; color:var(--slate-light); font-weight:400; margin-top:1px; }
+
+  /* ---------- Wizard area ---------- */
+  .wizard{ padding: 28px 36px 36px; }
+
+  .progress-row{
+    display:flex; align-items:center; gap:0; margin-bottom:30px;
+  }
+  .progress-row .seg{
+    flex:1; height:4px; background:var(--line-soft); border-radius:3px;
+    margin-right:6px; overflow:hidden; position:relative;
+  }
+  .progress-row .seg:last-child{ margin-right:0; }
+  .progress-row .seg .fill{
+    position:absolute; inset:0; width:0%;
+    background:linear-gradient(90deg, var(--green), #29c483);
+    border-radius:3px;
+    transition:width 0.5s cubic-bezier(.4,0,.2,1);
+  }
+  .progress-meta{
+    display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;
+  }
+  .progress-meta .step-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; letter-spacing:0.05em; color:var(--slate-light);
+  }
+  .progress-meta .step-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px; font-weight:600; color:var(--navy);
+  }
+
+  .step{ display:none; animation:slideIn 0.35s cubic-bezier(.16,1,.3,1); }
+  .step.active{ display:block; }
+  @keyframes slideIn{
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--navy-soft);
+    margin-bottom:7px;
+  }
+  .field label .hint{
+    font-weight:400; color:var(--slate-light); font-size:11.5px;
+  }
+  .field input[type=text],
+  .field input[type=email],
+  .field input[type=tel],
+  .field select,
+  .field textarea{
+    width:100%;
+    background:var(--canvas);
+    border:1.5px solid var(--line);
+    border-radius:11px;
+    padding:12px 14px;
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    color:var(--navy);
+    outline:none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--slate-light); }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:var(--green);
+    background:var(--paper);
+  }
+  .field input.invalid, .field select.invalid, .field textarea.invalid{
+    border-color:var(--danger);
+  }
+  .field textarea{ resize:none; font-family:'Inter',sans-serif; line-height:1.55; }
+  .field .charcount{
+    text-align:right; font-size:10.5px; color:var(--slate-light); margin-top:5px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .field .errmsg{
+    font-size:11.5px; color:var(--danger); margin-top:6px; display:none;
+  }
+  .field .errmsg.show{ display:block; }
+
+  .select-wrap{ position:relative; }
+  .select-wrap select{ appearance:none; cursor:pointer; padding-right:36px; }
+  .select-wrap::after{
+    content:"";
+    position:absolute; right:14px; top:50%;
+    width:8px; height:8px;
+    border-right:1.5px solid var(--slate); border-bottom:1.5px solid var(--slate);
+    transform:translateY(-65%) rotate(45deg);
+    pointer-events:none;
+  }
+
+  /* ---------- Track cards ---------- */
+  .track-grid{ display:grid; grid-template-columns:1fr; gap:10px; }
+  .track-card{
+    border:1.5px solid var(--line);
+    border-radius:13px;
+    padding:14px 16px;
+    cursor:pointer;
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--canvas);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .track-card:hover{ border-color:var(--slate-light); }
+  .track-card.selected{
+    border-color:var(--green);
+    background:var(--green-soft);
+  }
+  .track-card .radio{
+    width:18px;height:18px; border-radius:50%;
+    border:1.5px solid var(--line);
+    flex-shrink:0; margin-top:1px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--paper);
+  }
+  .track-card.selected .radio{ border-color:var(--green); }
+  .track-card.selected .radio::after{
+    content:""; width:9px; height:9px; border-radius:50%; background:var(--green);
+  }
+  .track-card .tc-title{ font-size:13.5px; font-weight:600; color:var(--navy); margin-bottom:2px; }
+  .track-card .tc-desc{ font-size:12px; color:var(--slate); line-height:1.5; }
+  .track-card .tc-badge{
+    margin-top:5px;
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:0.05em;
+    color:var(--slate-light);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:2px 7px;
+    border-radius:5px;
+  }
+  .track-card.future-role{
+    opacity:0.6;
+    cursor:default;
+  }
+  .track-card.future-role:hover{ border-color:var(--line); }
+
+  /* ---------- Nav buttons ---------- */
+  .nav-row{
+    display:flex; gap:10px; margin-top:8px; align-items:center;
+  }
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border-radius:11px;
+    padding:13px 22px;
+    cursor:pointer;
+    border:none;
+    transition: transform 0.1s ease, opacity 0.15s ease, background 0.15s ease;
+    display:inline-flex; align-items:center; justify-content:center; gap:7px;
+  }
+  .btn:active{ transform:scale(0.98); }
+  .btn-primary{
+    background:var(--navy);
+    color:white;
+    flex:1;
+  }
+  .btn-primary:hover{ background:var(--navy-soft); }
+  .btn-primary:disabled{ opacity:0.45; cursor:not-allowed; }
+  .btn-secondary{
+    background:transparent;
+    color:var(--slate);
+    border:1.5px solid var(--line);
+  }
+  .btn-secondary:hover{ border-color:var(--slate-light); color:var(--navy); }
+  .btn svg{ width:15px; height:15px; }
+
+  /* ---------- Review block ---------- */
+  .review-block{
+    background:var(--canvas);
+    border:1px solid var(--line-soft);
+    border-radius:13px;
+    padding:16px 18px;
+    margin-bottom:20px;
+  }
+  .review-row{
+    display:flex; justify-content:space-between; gap:14px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:12.5px;
+  }
+  .review-row:last-child{ border-bottom:none; }
+  .review-row .rk{ color:var(--slate-light); flex-shrink:0; font-weight:500; }
+  .review-row .rv{ color:var(--navy); text-align:right; font-weight:500; max-width:65%; word-break:break-word; }
+
+  .consent-row{
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:12px; color:var(--slate); line-height:1.5;
+    margin-bottom:22px;
+  }
+  .consent-row input{ margin-top:2px; accent-color:var(--green); flex-shrink:0; }
+
+  /* ---------- Success state ---------- */
+  .success-screen{
+    display:none;
+    padding:54px 36px 48px;
+    text-align:center;
+  }
+  .success-screen.show{ display:block; }
+  .success-icon{
+    width:62px; height:62px; border-radius:50%;
+    background:var(--green-soft);
+    border:1.5px solid rgba(31,174,110,0.25);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 22px;
+  }
+  .success-screen h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:22px; font-weight:700; color:var(--navy); margin:0 0 10px;
+  }
+  .success-screen p{
+    font-size:13.5px; color:var(--slate); line-height:1.65;
+    max-width:400px; margin:0 auto 18px;
+  }
+  .success-steps{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-width:400px;
+    margin:0 auto 26px;
+    text-align:left;
+  }
+  .success-step{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:12.5px;
+    color:var(--slate);
+    line-height:1.5;
+  }
+  .success-step .ss-num{
+    flex-shrink:0;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--green-soft);
+    border:1px solid rgba(31,174,110,0.2);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--green);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:600;
+  }
+  .success-bubble{
+    display:inline-flex; gap:10px; align-items:flex-end;
+    text-align:left;
+    background:var(--green-soft);
+    border:1px solid rgba(31,174,110,0.16);
+    border-radius:4px 14px 14px 14px;
+    padding:12px 16px;
+    font-size:12.5px;
+    color:var(--navy-soft);
+    line-height:1.55;
+    max-width:400px;
+  }
+
+  .footnote{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--slate-light);
+    margin-top:22px;
+    max-width:560px;
+  }
+
+  @media (max-width:600px){
+    .hero{ padding:32px 22px 26px; }
+    .wizard{ padding:24px 22px 30px; }
+    .success-screen{ padding:42px 22px 36px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .step, .pulse-dot, .progress-row .seg .fill{ animation:none !important; transition:none !important; }
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .track-card:focus-visible{
+    outline:2px solid var(--navy);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="texture"></div>
+
+<div class="shell">
+
+  <div class="brandbar" role="banner">
+    <img class="namepng" id="brandNameImg" alt="Bizzy" src="LOGO_NAME_PLACEHOLDER">
+    <span class="role-tag">CORE TEAM · COHORT 01</span>
+  </div>
+
+  <div class="card" id="mainCard">
+
+    <!-- ============ HERO ============ -->
+    <div class="hero">
+      <div class="eyebrow" aria-label="Status: now recruiting"><span class="pulse-dot" aria-hidden="true"></span> NOW RECRUITING · 4-WEEK BUILD SPRINT</div>
+
+      <h1>Help small businesses<br>run themselves on <span class="accent">WhatsApp.</span></h1>
+
+      <p class="lede">
+        Bizzy is an AI assistant that lives inside WhatsApp for Nigerian SMEs — the Instagram vendors,
+        spare parts dealers, and boutique owners who currently track stock in notebooks and chase payments
+        by memory. <strong>We're recruiting a small core team</strong> to design and ship the first working version.
+      </p>
+
+      <!-- Mission statement -->
+      <div class="mission-strip" role="note" aria-label="Our mission">
+        <div class="mission-icon" aria-hidden="true">🌍</div>
+        <p>Nigeria has <strong>40 million+ small businesses</strong>. Most run on memory, paper, and guesswork. Bizzy gives them a business brain that speaks their language — English, Pidgin, Yorùbá, Igbo, or Hausa. You won't just be shipping features; you'll be changing how millions of people run their livelihoods.</p>
+      </div>
+
+      <!-- Urgency CTA -->
+      <div class="hero-cta-row">
+        <span class="urgency-badge">⚡ SPOTS ARE LIMITED</span>
+        <p class="hero-cta-text"><strong>Ready to shape the future of business in Africa?</strong> Apply now — we review on a rolling basis and close once the cohort fills.</p>
+      </div>
+
+      <!-- Bizzy product demo bubble -->
+      <div class="bubble-preview" aria-label="Example Bizzy message">
+        <div class="bubble-avatar" aria-hidden="true"><img id="bubbleLogoImg" alt="" src="LOGO_BUBBLE_PLACEHOLDER"></div>
+        <div class="bubble" role="presentation">
+          Sold 3 bags of rice to Mama Tunde — ₦4,500. Recorded ✓. Stock left: 12 bags.
+          <div class="lang-row" aria-label="Supported languages">
+            <span>EN</span><span>PIDGIN</span><span>YORÙBÁ</span><span>IGBO</span><span>HAUSA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expanded perks grid -->
+      <div class="perk-grid" role="list" aria-label="Team perks">
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">🤝</div>
+          <div class="txt">Direct mentorship<span>1:1 time with engineering leads</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">📄</div>
+          <div class="txt">Verified certificate<span>Shareable proof of contribution</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">⚡</div>
+          <div class="txt">Real shipped impact<span>4 weeks, live product, real users</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">🏷️</div>
+          <div class="txt">Named credit<span>Early access + your name in the product</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">🌐</div>
+          <div class="txt">Remote &amp; flexible<span>Work from anywhere in Nigeria</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">📚</div>
+          <div class="txt">Learning budget<span>Access to courses &amp; tools we use</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">💼</div>
+          <div class="txt">Equity consideration<span>Top contributors flagged for founding team</span></div>
+        </div>
+        <div class="perk" role="listitem">
+          <div class="ico" aria-hidden="true">🎉</div>
+          <div class="txt">Team retreat<span>End-of-sprint celebration for the cohort</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ WIZARD ============ -->
+    <div class="wizard" id="wizardArea">
+
+      <div class="progress-row" id="progressRow" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Application progress"></div>
+      <div class="progress-meta">
+        <span class="step-label" id="stepLabel" aria-live="polite">STEP 1 / 4</span>
+        <span class="step-title" id="stepTitle">Who's applying?</span>
+      </div>
+
+      <form id="appForm" novalidate
+        action="https://docs.google.com/forms/d/e/1FAIpQLScxeJBlakERdvTIxCXpPDKp6GI7M1nTc9DAVOWhPwO9yCCunA/formResponse"
+        method="POST" target="hidden_iframe">
+
+        <!-- STEP 1: Identity -->
+        <div class="step active" data-step="1">
+          <div class="field">
+            <label for="f_name">Full name</label>
+            <input type="text" id="f_name" name="entry.2008777621" placeholder="e.g. Adaeze Okonkwo" autocomplete="name" aria-required="true" aria-describedby="err_name">
+            <div class="errmsg" id="err_name" role="alert">Enter your full name.</div>
+          </div>
+          <div class="field">
+            <label for="f_email">Email address</label>
+            <input type="email" id="f_email" name="entry.911431387" placeholder="you@example.com" autocomplete="email" aria-required="true" aria-describedby="err_email">
+            <div class="errmsg" id="err_email" role="alert">Enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="f_phone">WhatsApp number <span class="hint">— we'll reach you here</span></label>
+            <input type="tel" id="f_phone" name="entry.464289105" placeholder="08123456789" autocomplete="tel" aria-required="true" aria-describedby="err_phone">
+            <div class="errmsg" id="err_phone" role="alert">Enter an 11-digit Nigerian phone number.</div>
+          </div>
+          <div class="field">
+            <label for="f_city">City</label>
+            <input type="text" id="f_city" name="entry.1311257540" placeholder="e.g. Akure" aria-required="true" aria-describedby="err_city">
+            <div class="errmsg" id="err_city" role="alert">Enter your city.</div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Track — full 11 roles + 1 future -->
+        <div class="step" data-step="2">
+          <div class="track-grid" id="trackGrid" role="radiogroup" aria-label="Choose your track">
+
+            <div class="track-card" data-value="Backend Developer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Backend Developer</div>
+                <div class="tc-desc">Build the systems that power Bizzy — message routing, data pipelines, and the logic that keeps SMEs running reliably at scale.</div>
+                <span class="tc-badge">Node.js · PostgreSQL · APIs</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="AI/ML Engineer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">AI / ML Engineer</div>
+                <div class="tc-desc">Own the intelligence layer — LLM integrations, multilingual NLP, and the AI that understands Pidgin, Yorùbá, Igbo, and Hausa.</div>
+                <span class="tc-badge">LLMs · NLP · Python</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Full-Stack/Frontend Developer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Full-Stack / Frontend Developer</div>
+                <div class="tc-desc">Shape what users see and touch — the WhatsApp message flows, onboarding, and the interfaces that make Bizzy feel effortless.</div>
+                <span class="tc-badge">React · Next.js · Tailwind</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Sales & Growth" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Sales &amp; Growth</div>
+                <div class="tc-desc">Get Bizzy into the hands of Nigerian SMEs. Build outreach playbooks, onboard early users, and turn conversations into customers.</div>
+                <span class="tc-badge">B2B · Outreach · GTM</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="UI/UX Designer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">UI / UX Designer</div>
+                <div class="tc-desc">Design conversation flows and product interfaces that feel intuitive to traders, market vendors, and boutique owners.</div>
+                <span class="tc-badge">Figma · UX Research · Prototyping</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Data Engineer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Data Engineer</div>
+                <div class="tc-desc">Design the data infrastructure — from ingestion to analytics pipelines — that helps SMEs understand their own business.</div>
+                <span class="tc-badge">ETL · SQL · dbt</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Data Scientist" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Data Scientist</div>
+                <div class="tc-desc">Turn raw transaction and inventory data into insights and predictive features that help small businesses make smarter decisions.</div>
+                <span class="tc-badge">Python · ML · Analytics</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Community/Field Agent" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Community / Field Agent</div>
+                <div class="tc-desc">Be our boots on the ground — gather real SME feedback, build community relationships, and translate street-level insight into product direction.</div>
+                <span class="tc-badge">Community · Research · Fieldwork</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Finance & Operations" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Finance &amp; Operations</div>
+                <div class="tc-desc">Keep the startup engine running — handle financial reporting, vendor coordination, and the operational backbone that lets the team focus.</div>
+                <span class="tc-badge">Finance · Ops · Reporting</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Legal Advisor" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Legal Advisor</div>
+                <div class="tc-desc">Navigate Nigerian fintech and data privacy law, draft agreements, and ensure Bizzy operates safely and compliantly from day one.</div>
+                <span class="tc-badge">Compliance · Contracts · FinTech Law</span>
+              </div>
+            </div>
+
+            <div class="track-card" data-value="Mechatronics Engineer" tabindex="0" role="radio" aria-checked="false">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Mechatronics Engineer</div>
+                <div class="tc-desc">Explore hardware integrations — POS bridging, receipt printers, or IoT devices — that extend Bizzy beyond the phone.</div>
+                <span class="tc-badge">Hardware · IoT · Embedded</span>
+              </div>
+            </div>
+
+            <div class="track-card future-role" data-value="" tabindex="-1" role="radio" aria-checked="false" aria-disabled="true">
+              <div class="radio" aria-hidden="true"></div>
+              <div>
+                <div class="tc-title">Something else</div>
+                <div class="tc-desc">Don't see your skill here? Tell us in your story — we're open to roles we haven't imagined yet.</div>
+                <span class="tc-badge">FUTURE COHORT</span>
+              </div>
+            </div>
+
+          </div>
+          <input type="hidden" id="f_track" name="entry.481484501" value="">
+          <div class="errmsg" id="trackErr" role="alert" style="margin-top:10px;">Choose a track to continue.</div>
+        </div>
+
+        <!-- STEP 3: Story -->
+        <div class="step" data-step="3">
+          <div class="field">
+            <label for="f_why">Why this project, why now? <span class="hint">— your motivation</span></label>
+            <textarea id="f_why" name="entry.2056477788" rows="4" maxlength="600" placeholder="What pulls you toward helping Nigerian SMEs specifically? A story, an observation, a frustration you've seen firsthand — tell us what's real for you." aria-required="true" aria-describedby="err_why"></textarea>
+            <div class="charcount"><span id="whyCount">0</span>/600</div>
+            <div class="errmsg" id="err_why" role="alert">Tell us a bit about your motivation (at least 20 characters).</div>
+          </div>
+          <div class="field">
+            <label for="f_built">What have you built, or what do you want to build here?</label>
+            <textarea id="f_built" name="entry.816423413" rows="4" maxlength="600" placeholder="A past project, a side hustle, a tool you shipped — or, if you're earlier in your journey, what you're hoping this sprint helps you learn to build." aria-required="true" aria-describedby="err_built"></textarea>
+            <div class="charcount"><span id="builtCount">0</span>/600</div>
+            <div class="errmsg" id="err_built" role="alert">Tell us a bit about your experience or goals (at least 20 characters).</div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Review -->
+        <div class="step" data-step="4">
+          <div class="review-block" id="reviewBlock" role="region" aria-label="Application summary"></div>
+          <label class="consent-row">
+            <input type="checkbox" id="f_consent" aria-required="true">
+            <span>I understand this is a <strong>volunteer</strong> position with a 4-week commitment, and I'm applying in good faith with accurate information.</span>
+          </label>
+        </div>
+
+        <input type="hidden" name="entry.108608062" value="More than 5 hours">
+        <input type="hidden" name="entry.1190489957" value="Completed">
+        <input type="hidden" name="entry.608139219" value="Yes">
+
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary" id="btnBack" style="display:none;" aria-label="Go back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" id="btnNext">
+            Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ============ SUCCESS ============ -->
+    <div class="success-screen" id="successScreen" role="region" aria-label="Application submitted">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1FAE6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h2>You're in the queue.</h2>
+      <p>Your application went straight to the leads reviewing this cohort. Here's what happens next:</p>
+
+      <div class="success-steps" role="list">
+        <div class="success-step" role="listitem">
+          <div class="ss-num" aria-hidden="true">1</div>
+          <span><strong>Check your email</strong> — a confirmation copy of your application is on its way within a few minutes.</span>
+        </div>
+        <div class="success-step" role="listitem">
+          <div class="ss-num" aria-hidden="true">2</div>
+          <span><strong>We review within 7 days.</strong> Every application is read by a real person — no auto-rejections.</span>
+        </div>
+        <div class="success-step" role="listitem">
+          <div class="ss-num" aria-hidden="true">3</div>
+          <span><strong>If it's a fit, we'll reach you on WhatsApp</strong> at the number you provided for a short intro call.</span>
+        </div>
+      </div>
+
+      <div class="success-bubble" role="note">
+        <span>👋 Thanks for applying — we read every story. Keep an eye on this number, that's where we'll reach you.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footnote" role="contentinfo">Bizzy Core Team is a volunteer program. No payment is required to apply, and none will ever be requested.</p>
+
+</div>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" title="Form submission target"></iframe>
+
+<script>
+(function(){
+  const TOTAL_STEPS = 4;
+  let currentStep = 1;
+  let formSubmitted = false;
+
+  const stepTitles = {
+    1: "Who's applying?",
+    2: "Pick your track",
+    3: "Your story",
+    4: "Review &amp; send"
+  };
+
+  const form = document.getElementById('appForm');
+  const progressRow = document.getElementById('progressRow');
+  const stepLabel = document.getElementById('stepLabel');
+  const stepTitle = document.getElementById('stepTitle');
+  const btnNext = document.getElementById('btnNext');
+  const btnBack = document.getElementById('btnBack');
+  const successScreen = document.getElementById('successScreen');
+  const wizardArea = document.getElementById('wizardArea');
+
+  // build progress segments
+  for(let i=0;i<TOTAL_STEPS;i++){
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    const fill = document.createElement('div');
+    fill.className = 'fill';
+    seg.appendChild(fill);
+    progressRow.appendChild(seg);
+  }
+  const segFills = progressRow.querySelectorAll('.fill');
+
+  function updateProgress(){
+    segFills.forEach((f, idx) => {
+      f.style.width = (idx < currentStep) ? '100%' : '0%';
+    });
+    stepLabel.textContent = `STEP ${currentStep} / ${TOTAL_STEPS}`;
+    stepTitle.innerHTML = stepTitles[currentStep];
+    progressRow.setAttribute('aria-valuenow', currentStep);
+    btnBack.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+    btnNext.innerHTML = currentStep === TOTAL_STEPS
+      ? 'Send application <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>'
+      : 'Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>';
+  }
+
+  function showStep(n){
+    document.querySelectorAll('.step').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.step) === n);
+    });
+    updateProgress();
+    if(n === 4) buildReview();
+    wizardArea.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function setError(input, show){
+    const field = input.closest('.field');
+    if(!field) return;
+    input.classList.toggle('invalid', show);
+    const err = field.querySelector('.errmsg');
+    if(err) err.classList.toggle('show', show);
+  }
+
+  function validatePhone(val){
+    return /^0\d{10}$/.test(val.trim());
+  }
+
+  function validateStep(n){
+    let valid = true;
+
+    if(n === 1){
+      const name = document.getElementById('f_name');
+      const email = document.getElementById('f_email');
+      const phone = document.getElementById('f_phone');
+      const city = document.getElementById('f_city');
+
+      if(name.value.trim().length < 2){ setError(name, true); valid = false; } else setError(name, false);
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){ setError(email, true); valid = false; } else setError(email, false);
+      if(!validatePhone(phone.value)){ setError(phone, true); valid = false; } else setError(phone, false);
+      if(city.value.trim().length < 2){ setError(city, true); valid = false; } else setError(city, false);
+    }
+
+    if(n === 2){
+      const trackVal = document.getElementById('f_track').value;
+      const trackErr = document.getElementById('trackErr');
+      if(!trackVal){ trackErr.classList.add('show'); valid = false; } else trackErr.classList.remove('show');
+    }
+
+    if(n === 3){
+      const why = document.getElementById('f_why');
+      const built = document.getElementById('f_built');
+      if(why.value.trim().length < 20){ setError(why, true); valid = false; } else setError(why, false);
+      if(built.value.trim().length < 20){ setError(built, true); valid = false; } else setError(built, false);
+    }
+
+    if(n === 4){
+      const consent = document.getElementById('f_consent');
+      if(!consent.checked){ valid = false; consent.closest('.consent-row').style.color = 'var(--danger)'; }
+      else { consent.closest('.consent-row').style.color = ''; }
+    }
+
+    return valid;
+  }
+
+  function buildReview(){
+    const block = document.getElementById('reviewBlock');
+    const trackVal = document.getElementById('f_track').value;
+
+    const rows = [
+      ['Name', document.getElementById('f_name').value],
+      ['Email', document.getElementById('f_email').value],
+      ['WhatsApp', document.getElementById('f_phone').value],
+      ['City', document.getElementById('f_city').value],
+      ['Track', trackVal || '—']
+    ];
+
+    block.innerHTML = rows.map(([k,v]) => `
+      <div class="review-row"><span class="rk">${k}</span><span class="rv">${escapeHtml(v)}</span></div>
+    `).join('');
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // track card selection — skip future-role cards
+  document.querySelectorAll('.track-card:not(.future-role)').forEach(card => {
+    function select(){
+      document.querySelectorAll('.track-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-checked','false');
+      });
+      card.classList.add('selected');
+      card.setAttribute('aria-checked','true');
+      document.getElementById('f_track').value = card.dataset.value;
+      document.getElementById('trackErr').classList.remove('show');
+    }
+    card.addEventListener('click', select);
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); select(); }
+    });
+  });
+
+  // char counters
+  function bindCounter(taId, countId){
+    const ta = document.getElementById(taId);
+    const countEl = document.getElementById(countId);
+    ta.addEventListener('input', () => { countEl.textContent = ta.value.length; });
+  }
+  bindCounter('f_why','whyCount');
+  bindCounter('f_built','builtCount');
+
+  // phone: digits only
+  document.getElementById('f_phone').addEventListener('input', function(){
+    this.value = this.value.replace(/[^\d]/g,'').slice(0,11);
+  });
+
+  btnNext.addEventListener('click', () => {
+    if(!validateStep(currentStep)) return;
+
+    if(currentStep < TOTAL_STEPS){
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      formSubmitted = true;
+      form.submit();
+      btnNext.disabled = true;
+      btnNext.innerHTML = 'Sending…';
+    }
+  });
+
+  btnBack.addEventListener('click', () => {
+    if(currentStep > 1){
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  document.getElementById('hidden_iframe').addEventListener('load', () => {
+    if(formSubmitted){
+      document.getElementById('mainCard').querySelector('.hero').style.display = 'none';
+      wizardArea.style.display = 'none';
+      successScreen.classList.add('show');
+    }
+  });
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
