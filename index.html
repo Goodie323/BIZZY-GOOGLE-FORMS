@@ -625,7 +625,7 @@
       </div>
 
       <form id="appForm" novalidate
-        action="https://script.google.com/macros/s/AKfycbyLI-ldCkLPfgMgRUovxR_NJ_ebwVa0oUH79ws5zZcHah2cM4cBrDpeJyWkKIoNUkw7/exec"
+        action="https://script.google.com/macros/s/AKfycbyXIbq-13gtN_8Fizzh7sMmN2GtEcIGQ8TAA8YwUHbdEdqBJgT-hKMRzjeE9eZf6KbO/exec"
         method="POST" target="hidden_iframe">
 
         <!-- STEP 1: Identity -->
@@ -1006,7 +1006,7 @@
     this.value = this.value.replace(/[^\d]/g,'').slice(0,11);
   });
 
- btnNext.addEventListener('click', () => {
+btnNext.addEventListener('click', () => {
     if(!validateStep(currentStep)) return;
 
     if(currentStep < TOTAL_STEPS){
@@ -1016,13 +1016,13 @@
       btnNext.disabled = true;
       btnNext.innerHTML = 'Sending…';
 
-      // 1. Collect all the form entry data cleanly
-      const formData = new FormData(form);
+      // 1. FIXED: Convert data into URL parameters so Google can parse it
+      const formData = new URLSearchParams(new FormData(form));
 
       // 2. Force the browser to send it directly to your Web App URL via Fetch
       fetch(form.action, {
         method: 'POST',
-        body: formData,
+        body: formData, // Sending clean URLSearchParams instead of multipart FormData
         mode: 'no-cors' // Bypasses cross-origin browser security restrictions
       })
       .then(() => {
@@ -1040,7 +1040,7 @@
       });
     }
   });
-
+    
   btnBack.addEventListener('click', () => {
     if(currentStep > 1){
       currentStep--;
