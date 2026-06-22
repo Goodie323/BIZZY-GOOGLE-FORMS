@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@animxyz/core">
 <style>
   :root{
     --navy:#0F1B3D;
@@ -277,12 +278,8 @@
     font-size:17px; font-weight:600; color:var(--navy);
   }
 
-  .step{ display:none; animation:slideIn 0.35s cubic-bezier(.16,1,.3,1); }
+  .step{ display:none; }
   .step.active{ display:block; }
-  @keyframes slideIn{
-    from{ opacity:0; transform:translateY(8px); }
-    to{ opacity:1; transform:translateY(0); }
-  }
 
   .field{ margin-bottom:18px; }
   .field label{
@@ -522,6 +519,13 @@
 
   @media (prefers-reduced-motion: reduce){
     .step, .pulse-dot, .progress-row .seg .fill{ animation:none !important; transition:none !important; }
+    /* Safeguard accessibility rules alongside AnimXYZ global flags */
+    [xyz], .xyz-nested {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
   }
 
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .track-card:focus-visible{
@@ -536,14 +540,13 @@
 
 <div class="shell">
 
-  <div class="brandbar" role="banner">
+  <div class="brandbar xyz-in" xyz="fade down duration-6" role="banner">
     <img class="namepng" id="brandNameImg" alt="Bizzy" src="images/bizzy brand name.jpg">
     <span class="role-tag">CORE TEAM · COHORT 01</span>
   </div>
 
-  <div class="card" id="mainCard">
+  <div class="card xyz-in" xyz="fade up ease-out-back duration-8" id="mainCard">
 
-    <!-- ============ HERO ============ -->
     <div class="hero">
       <div class="eyebrow" aria-label="Status: now recruiting"><span class="pulse-dot" aria-hidden="true"></span> NOW RECRUITING · 4-WEEK BUILD SPRINT</div>
 
@@ -555,19 +558,16 @@
         by memory. <strong>We're recruiting a small core team</strong> to design and ship the first working version.
       </p>
 
-      <!-- Mission statement -->
       <div class="mission-strip" role="note" aria-label="Our mission">
         <div class="mission-icon" aria-hidden="true">🌍</div>
         <p>Nigeria has <strong>40 million+ small businesses</strong>. Most run on memory, paper, and guesswork. Bizzy gives them a business brain that speaks their language — English, Pidgin, Yorùbá, Igbo, or Hausa. You won't just be shipping features; you'll be changing how millions of people run their livelihoods.</p>
       </div>
 
-      <!-- Urgency CTA -->
       <div class="hero-cta-row">
         <span class="urgency-badge">⚡ SPOTS ARE LIMITED</span>
         <p class="hero-cta-text"><strong>Ready to shape the future of business in Africa?</strong> Apply now — we review on a rolling basis and close once the cohort fills.</p>
       </div>
 
-      <!-- Bizzy product demo bubble -->
       <div class="bubble-preview" aria-label="Example Bizzy message">
         <div class="bubble-avatar" aria-hidden="true"><img id="bubbleLogoImg" alt="" src="images\bizzy brand logo.jpg"></div>
         <div class="bubble" role="presentation">
@@ -578,44 +578,42 @@
         </div>
       </div>
 
-      <!-- Expanded perks grid -->
-      <div class="perk-grid" role="list" aria-label="Team perks">
-        <div class="perk" role="listitem">
+      <div class="perk-grid" xyz="fade small down stagger-1 ease-in-out duration-4" role="list" aria-label="Team perks">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">🤝</div>
           <div class="txt">Direct mentorship<span>1:1 time with engineering leads</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">📄</div>
           <div class="txt">Verified certificate<span>Shareable proof of contribution</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">⚡</div>
           <div class="txt">Real shipped impact<span>4 weeks, live product, real users</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">🏷️</div>
           <div class="txt">Named credit<span>Early access + your name in the product</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">🌐</div>
           <div class="txt">Remote &amp; flexible<span>Work from anywhere in Nigeria</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">📚</div>
           <div class="txt">Learning budget<span>Access to courses &amp; tools we use</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">💼</div>
           <div class="txt">Equity consideration<span>Top contributors flagged for founding team</span></div>
         </div>
-        <div class="perk" role="listitem">
+        <div class="perk xyz-nested" role="listitem">
           <div class="ico" aria-hidden="true">🎉</div>
           <div class="txt">Team retreat<span>End-of-sprint celebration for the cohort</span></div>
         </div>
       </div>
     </div>
 
-    <!-- ============ WIZARD ============ -->
     <div class="wizard" id="wizardArea">
 
       <div class="progress-row" id="progressRow" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Application progress"></div>
@@ -628,7 +626,6 @@
         action="https://script.google.com/macros/s/AKfycbyXIbq-13gtN_8Fizzh7sMmN2GtEcIGQ8TAA8YwUHbdEdqBJgT-hKMRzjeE9eZf6KbO/exec"
         method="POST" target="hidden_iframe">
 
-        <!-- STEP 1: Identity -->
         <div class="step active" data-step="1">
           <div class="field">
             <label for="f_name">Full name</label>
@@ -652,7 +649,6 @@
           </div>
         </div>
 
-        <!-- STEP 2: Track — full 11 roles + 1 future -->
         <div class="step" data-step="2">
           <div class="track-grid" id="trackGrid" role="radiogroup" aria-label="Choose your track">
 
@@ -769,7 +765,6 @@
           <div class="errmsg" id="trackErr" role="alert" style="margin-top:10px;">Choose a track to continue.</div>
         </div>
 
-        <!-- STEP 3: Story -->
         <div class="step" data-step="3">
           <div class="field">
             <label for="f_why">Why this project, why now? <span class="hint">— your motivation</span></label>
@@ -785,7 +780,6 @@
           </div>
         </div>
 
-        <!-- STEP 4: Review -->
         <div class="step" data-step="4">
           <div class="review-block" id="reviewBlock" role="region" aria-label="Application summary"></div>
           <label class="consent-row">
@@ -811,8 +805,7 @@
       </form>
     </div>
 
-    <!-- ============ SUCCESS ============ -->
-    <div class="success-screen" id="successScreen" role="region" aria-label="Application submitted">
+    <div class="success-screen xyz-in" id="successScreen" xyz="fade sync scale-75 duration-6" role="region" aria-label="Application submitted">
       <div class="success-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1FAE6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
@@ -895,7 +888,17 @@
 
   function showStep(n){
     document.querySelectorAll('.step').forEach(s => {
-      s.classList.toggle('active', parseInt(s.dataset.step) === n);
+      const isActive = parseInt(s.dataset.step) === n;
+      s.classList.toggle('active', isActive);
+      
+      // Injecting dynamic interactive triggers for context transitions
+      if (isActive) {
+        s.setAttribute('xyz', 'fade small up duration-4');
+        s.classList.add('xyz-in');
+      } else {
+        s.removeAttribute('xyz');
+        s.classList.remove('xyz-in');
+      }
     });
     updateProgress();
     if(n === 4) buildReview();
@@ -1016,17 +1019,14 @@ btnNext.addEventListener('click', () => {
       btnNext.disabled = true;
       btnNext.innerHTML = 'Sending…';
 
-      // 1. FIXED: Convert data into URL parameters so Google can parse it
       const formData = new URLSearchParams(new FormData(form));
 
-      // 2. Force the browser to send it directly to your Web App URL via Fetch
       fetch(form.action, {
         method: 'POST',
-        body: formData, // Sending clean URLSearchParams instead of multipart FormData
-        mode: 'no-cors' // Bypasses cross-origin browser security restrictions
+        body: formData,
+        mode: 'no-cors'
       })
       .then(() => {
-        // 3. Trigger your success screen once sent
         formSubmitted = true;
         document.getElementById('mainCard').querySelector('.hero').style.display = 'none';
         wizardArea.style.display = 'none';
